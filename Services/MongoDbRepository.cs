@@ -3,6 +3,8 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Microsoft.Extensions.Configuration;
 using System.Linq;
+using ArktiPhonesDatabaseUploader.Models.MongoDB;
+using ArktiPhonesDatabaseUploader.Models.Standard;
 
 public class MongoDbRepository : IDeviceRepository
 {
