@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArktiPhonesDatabaseUploader.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    partial class DeviceContextModelSnapshot : ModelSnapshot
+    [Migration("20190423050616_fix_date")]
+    partial class fix_date
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,7 +110,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CameraID");
+                    b.Property<int>("CameraID");
 
                     b.Property<int?>("FrontCameraFeatureCameraInfoID");
 
@@ -687,7 +689,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 {
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Camera", "Camera")
                         .WithMany("Features")
-                        .HasForeignKey("CameraID");
+                        .HasForeignKey("CameraID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "FrontCameraFeature")
                         .WithMany("FrontCameraFeatures")

@@ -5,9 +5,10 @@ namespace ArktiPhonesDatabaseUploader
 {
     interface IDeviceRepository
     {
-        IQueryable<DeviceDetailDefault> GetDevices();
-        DeviceDetailDefault AddDevice(DeviceDetailDefault device);
+        IQueryable<DeviceDetail> GetDevices();
+        DeviceDetail AddDevice(DeviceDetail device);
+        IEnumerable<Models.DeviceDetail> AddDevices(IEnumerable<Models.DeviceDetail> devices);
         void RemoveDevice(int id);
-        void UpdateDevice(int id, DeviceDetailDefault device);
+        void UpdateDevice(int id, DeviceDetail device);
     }
 }

@@ -11,6 +11,8 @@ namespace ArktiPhonesDatabaseUploader.Models {
 
         // public int CameraInfoID { get; set; }
         // public virtual CameraInfo CameraInfo { get; set; }
+        public int? CameraID { get; set; }
+        public virtual Camera Camera { get; set; }
         public virtual CameraInfo VideoFeature { get; set; }
         public virtual CameraInfo RearCameraFeature { get; set; }
         public virtual CameraInfo FrontCameraFeature { get; set; }

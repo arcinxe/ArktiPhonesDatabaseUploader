@@ -16,11 +16,11 @@ namespace ArktiPhonesDatabaseUploader.Models {
         public int CameraInfoID { get; set; }
 
         public virtual CameraInfo CameraInfo { get; set; }
-        public virtual ICollection<CertainCameraFeature> Features { get; set; }
+        public virtual ICollection<CameraFeature> Features { get; set; }
     }
 
     // Used locally in application
     public class CameraDefault : CameraBase {
-        public ICollection<CameraFeature> Features { get; set; }
+        public ICollection<CameraFeatureDefault> Features { get; set; }
     }
 }

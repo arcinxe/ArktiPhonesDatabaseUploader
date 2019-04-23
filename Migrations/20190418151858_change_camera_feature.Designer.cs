@@ -3,14 +3,16 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArktiPhonesDatabaseUploader.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    partial class DeviceContextModelSnapshot : ModelSnapshot
+    [Migration("20190418151858_change_camera_feature")]
+    partial class change_camera_feature
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,6 +112,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<int?>("CameraID");
 
+                    b.Property<int?>("CameraInfoID");
+
                     b.Property<int?>("FrontCameraFeatureCameraInfoID");
 
                     b.Property<string>("Name");
@@ -121,6 +125,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasKey("CameraFeatureID");
 
                     b.HasIndex("CameraID");
+
+                    b.HasIndex("CameraInfoID");
 
                     b.HasIndex("FrontCameraFeatureCameraInfoID");
 
@@ -216,25 +222,17 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AnnouncedStatusID");
+                    b.Property<int>("DeviceDetailsID");
 
                     b.Property<int?>("Month");
 
                     b.Property<int?>("Quarter");
 
-                    b.Property<int?>("ReleasedStatusID");
-
                     b.Property<int?>("Year");
 
                     b.HasKey("DateID");
 
-                    b.HasIndex("AnnouncedStatusID")
-                        .IsUnique()
-                        .HasFilter("[AnnouncedStatusID] IS NOT NULL");
-
-                    b.HasIndex("ReleasedStatusID")
-                        .IsUnique()
-                        .HasFilter("[ReleasedStatusID] IS NOT NULL");
+                    b.HasIndex("DeviceDetailsID");
 
                     b.ToTable("Date");
                 });
@@ -557,13 +555,21 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AnnouncedDateDateID");
+
                     b.Property<string>("CurrentStatus");
 
                     b.Property<string>("DatesOriginalText");
 
+                    b.Property<int?>("ReleasedDateDateID");
+
                     b.HasKey("StatusID");
 
-                    b.ToTable("Status");
+                    b.HasIndex("AnnouncedDateDateID");
+
+                    b.HasIndex("ReleasedDateDateID");
+
+                    b.ToTable("Statuss");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Usb", b =>
@@ -685,9 +691,13 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraFeature", b =>
                 {
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Camera", "Camera")
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Camera")
                         .WithMany("Features")
                         .HasForeignKey("CameraID");
+
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "CameraInfo")
+                        .WithMany()
+                        .HasForeignKey("CameraInfoID");
 
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "FrontCameraFeature")
                         .WithMany("FrontCameraFeatures")
@@ -719,13 +729,10 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Date", b =>
                 {
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Status", "AnnouncedStatus")
-                        .WithOne("AnnouncedDate")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Date", "AnnouncedStatusID");
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Status", "ReleasedStatus")
-                        .WithOne("ReleasedDate")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Date", "ReleasedStatusID");
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetails")
+                        .WithMany()
+                        .HasForeignKey("DeviceDetailsID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.DeviceColor", b =>
@@ -829,6 +836,17 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .WithMany("SimCards")
                         .HasForeignKey("CommunicationID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Status", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Date", "AnnouncedDate")
+                        .WithMany()
+                        .HasForeignKey("AnnouncedDateDateID");
+
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Date", "ReleasedDate")
+                        .WithMany()
+                        .HasForeignKey("ReleasedDateDateID");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.UsbFeature", b =>
