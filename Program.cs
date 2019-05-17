@@ -3,14 +3,17 @@ using System.Linq;
 using ArktiPhonesDatabaseUploader.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ArktiPhonesDatabaseUploader {
-    class Program {
-        static void Main(string[] args) {
+namespace ArktiPhonesDatabaseUploader
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             var startTime = DateTime.Now;
             System.Console.WriteLine($"Started at {startTime}");
             var devices = new FileLoader().LoadDevices();
             // IDeviceRepository service = new MongoDbRepository ();
-            // var count = 1;
+            var count = 1;
             // foreach (var device in devices) {
             //     service.AddDevice (device);
             //     System.Console.WriteLine ($"Device {count++} out of {devices.Count}");
@@ -20,8 +23,14 @@ namespace ArktiPhonesDatabaseUploader {
             var deviceToInsert = devices
                 // .Take(100)
                 .Select(d => converter.Convert(d));
-            for (var i = 0; i < (deviceToInsert.Count() / 1000) + 1; i++) {
-                repo.AddDevices(deviceToInsert.Skip(i * 1000).Take(1000));
+                System.Console.WriteLine("HI!");
+                count = deviceToInsert.Count();
+            for (var i = 0; i < (count / 100) + 1; i++)
+            {
+                var subStartTime = DateTime.Now;
+                repo.AddDevices(deviceToInsert.Skip(i * 100).Take(100));
+                System.Console.Write($"{((double)i / count * 10000).ToString("00.00")}% - {i} out of {count / 100} done");
+                System.Console.WriteLine($" {(DateTime.Now - subStartTime):mm\\m\\:ss\\s\\:fff\\m\\s}!");
             }
             // foreach (var device in devices) {
             //     repo.AddDevice(converter.Convert(device));
@@ -29,15 +38,15 @@ namespace ArktiPhonesDatabaseUploader {
             // }
 
             // var optionsBuilder = new DbContextOptionsBuilder<DeviceContext> ();
-            // var db = new DeviceContext ();
+            var db = new DeviceContext ();
             // var foo = new DeviceDetail ();
             // foo.Name = "test";
             // var bar = new DeviceDetailConvert().Convert(foo);
             // db.DeviceDetails.Add (foo);
             // db.SaveChanges ();
-            // System.Console.WriteLine (db.Basics.Count ());
-            // var device = service.GetDevices().Where(d => d.CameraInfo.Cameras.Count > 5).FirstOrDefault();
-            // System.Console.WriteLine(device?.Basics.Name);
+            System.Console.WriteLine (db.Basics.Count ());
+            var device = db.DeviceDetails.Where(d => d.CameraInfo.Cameras.Count > 5).FirstOrDefault();
+            System.Console.WriteLine(device?.Basic.Slug);
             // System.Console.WriteLine("Gud");
             // service.RemoveDevice(device.Basics.DeviceId);
             System.Console.WriteLine($"Done in: ~{(DateTime.Now - startTime):mm\\m\\:ss\\s\\:fff\\m\\s}!");
