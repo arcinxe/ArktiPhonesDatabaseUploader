@@ -1,12 +1,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Status
-    {
+    public class Status {
         public int StatusID { get; set; }
         // public int AnnouncedDateID { get; set; }
         // public int ReleasedDateID { get; set; }
@@ -27,8 +24,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class StatusDefault
-    {
+    public class StatusDefault {
 
         public string CurrentStatus { get; set; }
 

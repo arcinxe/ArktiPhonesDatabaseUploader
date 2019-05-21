@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Wlan
-    {
+    public class Wlan {
         public int WlanID { get; set; }
         public bool? Available { get; set; }
         public virtual ICollection<WlanStandard> Standards { get; set; }
@@ -18,8 +14,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class WlanDefault
-    {
+    public class WlanDefault {
         public bool? Available { get; set; }
 
         public virtual ICollection<WlanStandardDefault> Standards { get; set; }

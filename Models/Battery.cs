@@ -1,8 +1,7 @@
 namespace ArktiPhonesDatabaseUploader.Models {
 
-
     // Used to work with SQL databases
-    public class Battery  {
+    public class Battery {
         public int BatteryID { get; set; }
 
         public int? Capacity { get; set; }
@@ -13,7 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models {
     }
 
     // Used locally in application
-    public class BatteryDefault  {
+    public class BatteryDefault {
 
         public int? Capacity { get; set; }
         public string Technology { get; set; }

@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class GpsFeature
-    {
+    public class GpsFeature {
         public int GpsFeatureID { get; set; }
         public string Name { get; set; }
 
@@ -15,8 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class GpsFeatureDefault
-    {
+    public class GpsFeatureDefault {
         public string Name { get; set; }
 
     }

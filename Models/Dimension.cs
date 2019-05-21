@@ -1,11 +1,7 @@
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Dimension
-    {
+    public class Dimension {
         public int DimensionID { get; set; }
         public double? Width { get; set; }
         public double? Height { get; set; }
@@ -16,8 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class DimensionDefault
-    {
+    public class DimensionDefault {
         public double? Width { get; set; }
         public double? Height { get; set; }
         public double? Thickness { get; set; }

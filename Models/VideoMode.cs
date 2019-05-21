@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class VideoMode
-    {
+    public class VideoMode {
         public int VideoModeID { get; set; }
         public int? Width { get; set; }
         public int? Height { get; set; }
@@ -17,8 +14,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class VideoModeDefault
-    {
+    public class VideoModeDefault {
         public int? Width { get; set; }
         public int? Height { get; set; }
         public int? FrameRate { get; set; }

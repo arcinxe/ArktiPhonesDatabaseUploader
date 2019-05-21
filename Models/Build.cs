@@ -2,9 +2,8 @@ using System.Collections.Generic;
 
 namespace ArktiPhonesDatabaseUploader.Models {
 
-
     // Used to work with SQL databases
-    public class Build  {
+    public class Build {
         public int BuildID { get; set; }
 
         public int? DimensionsID { get; set; }
@@ -25,7 +24,7 @@ namespace ArktiPhonesDatabaseUploader.Models {
     }
 
     // Used locally in application
-    public class BuildDefault  {
+    public class BuildDefault {
 
         public DimensionDefault Dimension { get; set; }
         public double? Weight { get; set; }

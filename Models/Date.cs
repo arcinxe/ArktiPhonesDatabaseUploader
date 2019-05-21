@@ -1,13 +1,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Date
-    {
+    public class Date {
         public int DateID { get; set; }
 
         public int? Year { get; set; }
@@ -16,18 +12,17 @@ namespace ArktiPhonesDatabaseUploader.Models
         public int? AnnouncedStatusID { get; set; }
         public int? ReleasedStatusID { get; set; }
 
-        [ForeignKey("AnnouncedStatusID")]
-        [InverseProperty("AnnouncedDate")]
+        [ForeignKey ("AnnouncedStatusID")]
+        [InverseProperty ("AnnouncedDate")]
         public virtual Status AnnouncedStatus { get; set; }
 
-        [ForeignKey("ReleasedStatusID")]
-        [InverseProperty("ReleasedDate")]
+        [ForeignKey ("ReleasedStatusID")]
+        [InverseProperty ("ReleasedDate")]
         public virtual Status ReleasedStatus { get; set; }
     }
 
     // Used locally in application
-    public class DateDefault
-    {
+    public class DateDefault {
         public int? Year { get; set; }
         public int? Month { get; set; }
         public int? Quarter { get; set; }

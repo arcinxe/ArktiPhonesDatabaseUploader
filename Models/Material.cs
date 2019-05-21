@@ -1,11 +1,7 @@
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Material
-    {
+    public class Material {
         public int MaterialID { get; set; }
         public string Front { get; set; }
         public string Back { get; set; }
@@ -16,8 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class MaterialDefault
-    {
+    public class MaterialDefault {
         public string Front { get; set; }
         public string Back { get; set; }
         public string Frame { get; set; }

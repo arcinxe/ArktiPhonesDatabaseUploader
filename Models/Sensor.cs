@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Sensor
-    {
+    public class Sensor {
         public int SensorID { get; set; }
         public string Name { get; set; }
 
@@ -15,8 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class SensorDefault
-    {
+    public class SensorDefault {
         public string Name { get; set; }
 
     }

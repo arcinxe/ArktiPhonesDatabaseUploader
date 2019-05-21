@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class SimCard
-    {
+    public class SimCard {
         public int SimCardID { get; set; }
         public string Type { get; set; }
 
@@ -15,8 +12,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class SimCardDefault
-    {
+    public class SimCardDefault {
         public string Type { get; set; }
 
     }

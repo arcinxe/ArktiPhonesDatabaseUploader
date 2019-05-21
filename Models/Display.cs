@@ -1,11 +1,7 @@
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Display
-    {
+    public class Display {
         public int DisplayID { get; set; }
         public int? ResolutionWidth { get; set; }
         public int? ResolutionHeight { get; set; }
@@ -26,8 +22,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class DisplayDefault
-    {
+    public class DisplayDefault {
         public int? ResolutionWidth { get; set; }
         public int? ResolutionHeight { get; set; }
         public int? ResolutionLines { get; set; }

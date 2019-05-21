@@ -1,11 +1,7 @@
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Memory
-    {
+    public class Memory {
         public int MemoryID { get; set; }
         public string CardType { get; set; }
         public int? CardMaxSize { get; set; }
@@ -17,8 +13,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class MemoryDefault
-    {
+    public class MemoryDefault {
         public string CardType { get; set; }
         public int? CardMaxSize { get; set; }
         public int? Internal { get; set; }

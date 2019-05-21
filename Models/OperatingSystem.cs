@@ -1,11 +1,7 @@
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class OperatingSystem
-    {
+    public class OperatingSystem {
         public int OperatingSystemID { get; set; }
         public string Name { get; set; }
         public string Version { get; set; }
@@ -17,8 +13,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class OperatingSystemDefault
-    {
+    public class OperatingSystemDefault {
         public string Name { get; set; }
         public string Version { get; set; }
         public string LatestVersion { get; set; }

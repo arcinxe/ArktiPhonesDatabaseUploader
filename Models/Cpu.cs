@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Cpu
-    {
+    public class Cpu {
         public int CpuID { get; set; }
 
         public string Producer { get; set; }
@@ -21,8 +17,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class CpuDefault
-    {
+    public class CpuDefault {
         public string Producer { get; set; }
         public string Name { get; set; }
         public string Series { get; set; }

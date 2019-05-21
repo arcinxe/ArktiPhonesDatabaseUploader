@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Gps
-    {
+    public class Gps {
         public int GpsID { get; set; }
         public bool? Available { get; set; }
         public virtual ICollection<GpsFeature> Features { get; set; }
@@ -17,8 +13,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application and for noSQL databases
-    public class GpsDefault
-    {
+    public class GpsDefault {
         public ICollection<GpsFeatureDefault> Features { get; set; }
         public bool? Available { get; set; }
     }

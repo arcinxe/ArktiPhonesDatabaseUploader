@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class Communication
-    {
+    public class Communication {
         public int CommunicationID { get; set; }
         public bool? AudioJack { get; set; }
         public string Bluetooth { get; set; }
@@ -24,17 +21,15 @@ namespace ArktiPhonesDatabaseUploader.Models
         public int DeviceDetailID { get; set; }
         public virtual DeviceDetail DeviceDetail { get; set; }
 
-        public Communication()
-        {
-            Gps = new Gps();
-            Usb = new Usb();
-            Wlan = new Wlan();
+        public Communication () {
+            Gps = new Gps ();
+            Usb = new Usb ();
+            Wlan = new Wlan ();
         }
     }
 
     // Used locally in application
-    public class CommunicationDefault
-    {
+    public class CommunicationDefault {
         public bool? AudioJack { get; set; }
         public string Bluetooth { get; set; }
         public bool Infrared { get; set; }
@@ -45,11 +40,10 @@ namespace ArktiPhonesDatabaseUploader.Models
         public ICollection<SimCardDefault> SimCards { get; set; }
         public ICollection<SensorDefault> Sensors { get; set; }
 
-        public CommunicationDefault()
-        {
-            Gps = new GpsDefault();
-            Usb = new UsbDefault();
-            Wlan = new WlanDefault();
+        public CommunicationDefault () {
+            Gps = new GpsDefault ();
+            Usb = new UsbDefault ();
+            Wlan = new WlanDefault ();
         }
     }
 }

@@ -1,13 +1,9 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models
-{
-
-
+namespace ArktiPhonesDatabaseUploader.Models {
 
     // Used to work with SQL databases
-    public class UsbFeature
-    {
+    public class UsbFeature {
         public int UsbFeatureID { get; set; }
         public string Name { get; set; }
         public int UsbID { get; set; }
@@ -15,8 +11,7 @@ namespace ArktiPhonesDatabaseUploader.Models
     }
 
     // Used locally in application
-    public class UsbFeatureDefault
-    {
+    public class UsbFeatureDefault {
         public string Name { get; set; }
     }
 }
