@@ -1,22 +1,25 @@
-namespace ArktiPhonesDatabaseUploader.Models {
-    public class BasicBase {
+namespace ArktiPhonesDatabaseUploader.Models
+{
 
-        public int GsmArenaId { get; set; }
+
+    // Used to work with SQL databases
+    public class Basic
+    {
+        public int BasicID { get; set; }
+        public int GsmArenaNumber { get; set; }
         public string Slug { get; set; }
         public string ImageUrl { get; set; }
         public string DeviceType { get; set; }
-    }
-
-    // Used to work with SQL databases
-    public class Basic : BasicBase {
-        public int BasicID { get; set; }
-
-        // public int DeviceDetailsID { get; set; }
-        public virtual DeviceDetail DeviceDetails { get; set; }
+        public int DeviceDetailID { get; set; }
+        public virtual DeviceDetail DeviceDetail { get; set; }
     }
 
     // Used locally in application
-    public class BasicDefault : BasicBase {
-
+    public class BasicDefault
+    {
+        public int GsmArenaNumber { get; set; }
+        public string Slug { get; set; }
+        public string ImageUrl { get; set; }
+        public string DeviceType { get; set; }
     }
 }

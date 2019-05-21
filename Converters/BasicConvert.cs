@@ -4,7 +4,7 @@ public class BasicConvert : IConverter<Basic, BasicDefault> {
     public BasicDefault Convert(Basic sourceObject) {
         var result = new BasicDefault() {
             DeviceType = sourceObject.DeviceType,
-            GsmArenaId = sourceObject.GsmArenaId,
+            GsmArenaNumber = sourceObject.GsmArenaNumber,
             ImageUrl = sourceObject.ImageUrl,
             Slug = sourceObject.Slug
         };
@@ -15,7 +15,7 @@ public class BasicConvert : IConverter<Basic, BasicDefault> {
     public Basic Convert(BasicDefault sourceObject) {
         var result = new Basic() {
             DeviceType = sourceObject.DeviceType,
-            GsmArenaId = sourceObject.GsmArenaId,
+            GsmArenaNumber = sourceObject.GsmArenaNumber,
             ImageUrl = sourceObject.ImageUrl,
             Slug = sourceObject.Slug
         };

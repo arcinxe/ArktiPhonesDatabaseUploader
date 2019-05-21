@@ -1,14 +1,11 @@
 using ArktiPhonesDatabaseUploader.Models;
 using Microsoft.EntityFrameworkCore;
 
-
-
-public class DeviceContext : DbContext
-{
+public class DeviceContext : DbContext {
     public DbSet<DeviceDetail> DeviceDetails { get; set; }
 
     public DbSet<Basic> Basics { get; set; }
-    public DbSet<Status> Status { get; set; }
+    public DbSet<Status> Statuses { get; set; }
     public DbSet<Battery> Batteries { get; set; }
     public DbSet<Display> Displays { get; set; }
     public DbSet<Communication> Communications { get; set; }
@@ -20,12 +17,23 @@ public class DeviceContext : DbContext
     public DbSet<Cpu> Cpus { get; set; }
     public DbSet<Gpu> Gpus { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
+    public DbSet<CameraFeature> CameraFeatures { get; set; }
+    public DbSet<DeviceColor> DeviceColors { get; set; }
+    public DbSet<VideoMode> VideoModes { get; set; }
+    public DbSet<Camera> Cameras { get; set; }
+    public DbSet<SimCard> SimCards { get; set; }
+    public DbSet<Sensor> Sensors { get; set; }
+    public DbSet<GpsFeature> GpsFeatures { get; set; }
+    // public DbSet<UsbFeature> UsbFeatures { get; set; }
+    public DbSet<WlanStandard> WlanStandards { get; set; }
+    public DbSet<WlanFeature> WlanFeatures { get; set; }
+
+    protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder) {
         optionsBuilder
-            // .UseSqlServer(@"server=localhost;database=TESTING;User ID=sa;password=Qwertyui0;");
-            // .UseOracle(@"User Id=C##arktin;Password=Qwertyui0;Data Source=localhost:1521/orcl");
-            .UseLazyLoadingProxies(true).UseSqlite("Data Source=ArktiPhones.db");
+            .UseLazyLoadingProxies (true)
+            .UseSqlServer(@"server=localhost;database=ArktiPhones;User ID=sa;password=Qwertyui0;");
+            // .UseOracle (@"User Id=C##arktin;Password=Qwertyui0;Data Source=localhost:1521/orcl");
+            // .UseSqlite ("Data Source=ArktiPhones.db");
     }
 
 }

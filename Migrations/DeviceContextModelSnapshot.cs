@@ -20,15 +20,20 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int>("BasicID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<string>("DeviceType");
 
-                    b.Property<int>("GsmArenaId");
+                    b.Property<int>("GsmArenaNumber");
 
                     b.Property<string>("ImageUrl");
 
                     b.Property<string>("Slug");
 
                     b.HasKey("BasicID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Basics");
                 });
@@ -40,11 +45,16 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<int?>("Capacity");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<int?>("Endurance");
 
                     b.Property<string>("Technology");
 
                     b.HasKey("BatteryID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Batteries");
                 });
@@ -54,6 +64,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int>("BuildID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<int?>("DimensionsID");
 
                     b.Property<int?>("MaterialID");
@@ -61,6 +73,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<double?>("Weight");
 
                     b.HasKey("BuildID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.HasIndex("MaterialID")
                         .IsUnique();
@@ -91,7 +106,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("CameraInfoID");
 
-                    b.ToTable("Camera");
+                    b.ToTable("Cameras");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraFeature", b =>
@@ -101,25 +116,25 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<int?>("CameraID");
 
-                    b.Property<int?>("FrontCameraFeatureCameraInfoID");
+                    b.Property<int?>("FrontCameraFeatureID");
 
                     b.Property<string>("Name");
 
-                    b.Property<int?>("RearCameraFeatureCameraInfoID");
+                    b.Property<int?>("RearCameraFeatureID");
 
-                    b.Property<int?>("VideoFeatureCameraInfoID");
+                    b.Property<int?>("VideoFeatureID");
 
                     b.HasKey("CameraFeatureID");
 
                     b.HasIndex("CameraID");
 
-                    b.HasIndex("FrontCameraFeatureCameraInfoID");
+                    b.HasIndex("FrontCameraFeatureID");
 
-                    b.HasIndex("RearCameraFeatureCameraInfoID");
+                    b.HasIndex("RearCameraFeatureID");
 
-                    b.HasIndex("VideoFeatureCameraInfoID");
+                    b.HasIndex("VideoFeatureID");
 
-                    b.ToTable("CameraFeature");
+                    b.ToTable("CameraFeatures");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraInfo", b =>
@@ -128,6 +143,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CameraOriginalText");
+
+                    b.Property<int>("DeviceDetailID");
 
                     b.Property<int?>("FrontCameraLeds");
 
@@ -138,6 +155,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int?>("VideoResolution");
 
                     b.HasKey("CameraInfoID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("CameraInfos");
                 });
@@ -151,6 +171,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<string>("Bluetooth");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<int?>("GpsID");
 
                     b.Property<bool>("Infrared");
@@ -162,6 +184,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int?>("WlanID");
 
                     b.HasKey("CommunicationID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.HasIndex("GpsID")
                         .IsUnique();
@@ -182,6 +207,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<int?>("Cores");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<string>("Model");
 
                     b.Property<string>("Name");
@@ -191,6 +218,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<string>("Series");
 
                     b.HasKey("CpuID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Cpus");
                 });
@@ -234,7 +264,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("BuildID");
 
-                    b.ToTable("DeviceColor");
+                    b.ToTable("DeviceColors");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.DeviceDetail", b =>
@@ -242,71 +272,11 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int>("DeviceDetailID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("BasicID");
-
-                    b.Property<int>("BatteryID");
-
                     b.Property<string>("Brand");
-
-                    b.Property<int>("BuildID");
-
-                    b.Property<int>("CameraInfoID");
-
-                    b.Property<int>("CommunicationID");
-
-                    b.Property<int>("CpuID");
-
-                    b.Property<int>("DisplayID");
-
-                    b.Property<int>("GpuID");
-
-                    b.Property<int>("MemoryID");
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("OperatingSystemID");
-
-                    b.Property<int>("PriceID");
-
-                    b.Property<int>("StatusID");
-
                     b.HasKey("DeviceDetailID");
-
-                    b.HasIndex("BasicID")
-                        .IsUnique();
-
-                    b.HasIndex("BatteryID")
-                        .IsUnique();
-
-                    b.HasIndex("BuildID")
-                        .IsUnique();
-
-                    b.HasIndex("CameraInfoID")
-                        .IsUnique();
-
-                    b.HasIndex("CommunicationID")
-                        .IsUnique();
-
-                    b.HasIndex("CpuID")
-                        .IsUnique();
-
-                    b.HasIndex("DisplayID")
-                        .IsUnique();
-
-                    b.HasIndex("GpuID")
-                        .IsUnique();
-
-                    b.HasIndex("MemoryID")
-                        .IsUnique();
-
-                    b.HasIndex("OperatingSystemID")
-                        .IsUnique();
-
-                    b.HasIndex("PriceID")
-                        .IsUnique();
-
-                    b.HasIndex("StatusID")
-                        .IsUnique();
 
                     b.ToTable("DeviceDetails");
                 });
@@ -345,6 +315,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<int?>("Colors");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<double?>("Diagonal");
 
                     b.Property<int?>("EffectiveColors");
@@ -368,6 +340,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<double?>("WidthRatio");
 
                     b.HasKey("DisplayID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Displays");
                 });
@@ -397,7 +372,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("GpsID");
 
-                    b.ToTable("GpsFeature");
+                    b.ToTable("GpsFeatures");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Gpu", b =>
@@ -405,11 +380,16 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.Property<int>("GpuID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<string>("Model");
 
                     b.Property<string>("Name");
 
                     b.HasKey("GpuID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Gpus");
                 });
@@ -441,6 +421,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<string>("CardType");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<int?>("Internal");
 
                     b.Property<int?>("RandomAccess");
@@ -449,6 +431,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasKey("MemoryID");
 
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
+
                     b.ToTable("Memories");
                 });
 
@@ -456,6 +441,8 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 {
                     b.Property<int>("OperatingSystemID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("DeviceDetailID");
 
                     b.Property<string>("FlavorName");
 
@@ -469,6 +456,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasKey("OperatingSystemID");
 
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
+
                     b.ToTable("OperatingSystems");
                 });
 
@@ -479,11 +469,16 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<string>("Currency");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.Property<double?>("EstimatedInEuro");
 
                     b.Property<double?>("Value");
 
                     b.HasKey("PriceID");
+
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
 
                     b.ToTable("Prices");
                 });
@@ -501,7 +496,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("CommunicationID");
 
-                    b.ToTable("Sensor");
+                    b.ToTable("Sensors");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.SimCard", b =>
@@ -517,7 +512,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("CommunicationID");
 
-                    b.ToTable("SimCard");
+                    b.ToTable("SimCards");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Status", b =>
@@ -529,9 +524,14 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.Property<string>("DatesOriginalText");
 
+                    b.Property<int>("DeviceDetailID");
+
                     b.HasKey("StatusID");
 
-                    b.ToTable("Status");
+                    b.HasIndex("DeviceDetailID")
+                        .IsUnique();
+
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Usb", b =>
@@ -583,7 +583,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("CameraInfoID");
 
-                    b.ToTable("VideoMode");
+                    b.ToTable("VideoModes");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Wlan", b =>
@@ -611,7 +611,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("WlanID");
 
-                    b.ToTable("WlanFeature");
+                    b.ToTable("WlanFeatures");
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.WlanStandard", b =>
@@ -627,11 +627,32 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasIndex("WlanID");
 
-                    b.ToTable("WlanStandard");
+                    b.ToTable("WlanStandards");
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Basic", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Basic")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Basic", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Battery", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Battery")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Battery", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Build", b =>
                 {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Build")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Build", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Material", "Material")
                         .WithOne("Build")
                         .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Build", "MaterialID");
@@ -653,19 +674,32 @@ namespace ArktiPhonesDatabaseUploader.Migrations
 
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "FrontCameraFeature")
                         .WithMany("FrontCameraFeatures")
-                        .HasForeignKey("FrontCameraFeatureCameraInfoID");
+                        .HasForeignKey("FrontCameraFeatureID");
 
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "RearCameraFeature")
                         .WithMany("RearCameraFeatures")
-                        .HasForeignKey("RearCameraFeatureCameraInfoID");
+                        .HasForeignKey("RearCameraFeatureID");
 
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "VideoFeature")
                         .WithMany("VideoFeatures")
-                        .HasForeignKey("VideoFeatureCameraInfoID");
+                        .HasForeignKey("VideoFeatureID");
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraInfo", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("CameraInfo")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.CameraInfo", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Communication", b =>
                 {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Communication")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Communication", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Gps", "Gps")
                         .WithOne("Communication")
                         .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Communication", "GpsID");
@@ -677,6 +711,14 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Wlan", "Wlan")
                         .WithOne("Communication")
                         .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Communication", "WlanID");
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Cpu", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Cpu")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Cpu", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Date", b =>
@@ -698,69 +740,6 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.DeviceDetail", b =>
-                {
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Basic", "Basic")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "BasicID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Battery", "Battery")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "BatteryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Build", "Build")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "BuildID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.CameraInfo", "CameraInfo")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "CameraInfoID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Communication", "Communication")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "CommunicationID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Cpu", "Cpu")
-                        .WithOne("DeviceDetail")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "CpuID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Display", "Display")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DisplayID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Gpu", "Gpu")
-                        .WithOne("DeviceDetail")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "GpuID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Memory", "Memory")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "MemoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.OperatingSystem", "OperatingSystem")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "OperatingSystemID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Price", "Price")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "PriceID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ArktiPhonesDatabaseUploader.Models.Status", "Status")
-                        .WithOne("DeviceDetails")
-                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "StatusID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Dimension", b =>
                 {
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Build", "Build")
@@ -769,11 +748,51 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Display", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Display")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Display", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.GpsFeature", b =>
                 {
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Gps", "Gps")
                         .WithMany("Features")
                         .HasForeignKey("GpsID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Gpu", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Gpu")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Gpu", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Memory", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Memory")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Memory", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.OperatingSystem", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("OperatingSystem")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.OperatingSystem", "DeviceDetailID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Price", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Price")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Price", "DeviceDetailID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -790,6 +809,14 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasOne("ArktiPhonesDatabaseUploader.Models.Communication", "Communication")
                         .WithMany("SimCards")
                         .HasForeignKey("CommunicationID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Status", b =>
+                {
+                    b.HasOne("ArktiPhonesDatabaseUploader.Models.DeviceDetail", "DeviceDetail")
+                        .WithOne("Status")
+                        .HasForeignKey("ArktiPhonesDatabaseUploader.Models.Status", "DeviceDetailID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

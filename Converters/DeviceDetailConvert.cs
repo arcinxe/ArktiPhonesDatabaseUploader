@@ -6,8 +6,8 @@ public class DeviceDetailConvert : IConverter<DeviceDetail, DeviceDetailDefault>
         result.Name = sourceObject.Name;
         result.Brand = sourceObject.Brand;
 
-        result.Build = new BuildConvert().Convert(sourceObject.Build);
         result.Basic = new BasicConvert().Convert(sourceObject.Basic);
+        result.Build = new BuildConvert().Convert(sourceObject.Build);
         result.Battery = new BatteryConvert().Convert(sourceObject.Battery);
         result.Display = new DisplayConvert().Convert(sourceObject.Display);
         result.Cpu = new CpuConvert().Convert(sourceObject.Cpu);
@@ -27,8 +27,8 @@ public class DeviceDetailConvert : IConverter<DeviceDetail, DeviceDetailDefault>
         result.Name = sourceObject.Name;
         result.Brand = sourceObject.Brand;
 
-        result.Build = new BuildConvert().Convert(sourceObject.Build);
         result.Basic = new BasicConvert().Convert(sourceObject.Basic);
+        result.Build = new BuildConvert().Convert(sourceObject.Build);
         result.Battery = new BatteryConvert().Convert(sourceObject.Battery);
         result.Display = new DisplayConvert().Convert(sourceObject.Display);
         result.Cpu = new CpuConvert().Convert(sourceObject.Cpu);

@@ -1,16 +1,18 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ArktiPhonesDatabaseUploader.Models {
-    public class DateBase {
+namespace ArktiPhonesDatabaseUploader.Models
+{
+
+
+
+    // Used to work with SQL databases
+    public class Date
+    {
+        public int DateID { get; set; }
+
         public int? Year { get; set; }
         public int? Month { get; set; }
         public int? Quarter { get; set; }
-    }
-
-    // Used to work with SQL databases
-    public class Date : DateBase {
-        public int DateID { get; set; }
-
         public int? AnnouncedStatusID { get; set; }
         public int? ReleasedStatusID { get; set; }
 
@@ -24,7 +26,10 @@ namespace ArktiPhonesDatabaseUploader.Models {
     }
 
     // Used locally in application
-    public class DateDefault : DateBase {
-
+    public class DateDefault
+    {
+        public int? Year { get; set; }
+        public int? Month { get; set; }
+        public int? Quarter { get; set; }
     }
 }

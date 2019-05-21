@@ -3,28 +3,25 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ArktiPhonesDatabaseUploader.Models {
-    public class DeviceDetailBase {
-        public string Brand { get; set; }
-        public string Name { get; set; }
-    }
 
     // Used to work with SQL databases
-    public class DeviceDetail : DeviceDetailBase {
+    public class DeviceDetail {
         public int DeviceDetailID { get; set; }
 
-        public virtual int BasicID { get; set; }
-        public virtual int StatusID { get; set; }
-        public virtual int BatteryID { get; set; }
-        public virtual int DisplayID { get; set; }
-        public virtual int CommunicationID { get; set; }
-        public virtual int BuildID { get; set; }
-        public virtual int CameraInfoID { get; set; }
-        public virtual int MemoryID { get; set; }
-        public virtual int PriceID { get; set; }
-        public virtual int OperatingSystemID { get; set; }
-        public virtual int CpuID { get; set; }
-        public virtual int GpuID { get; set; }
-
+        // public virtual int BasicID { get; set; }
+        // public virtual int StatusID { get; set; }
+        // public virtual int BatteryID { get; set; }
+        // public virtual int DisplayID { get; set; }
+        // public virtual int CommunicationID { get; set; }
+        // public virtual int BuildID { get; set; }
+        // public virtual int CameraInfoID { get; set; }
+        // public virtual int MemoryID { get; set; }
+        // public virtual int PriceID { get; set; }
+        // public virtual int OperatingSystemID { get; set; }
+        // public virtual int CpuID { get; set; }
+        // public virtual int GpuID { get; set; }
+        public string Brand { get; set; }
+        public string Name { get; set; }
         public virtual Basic Basic { get; set; }
         public virtual Status Status { get; set; }
         public virtual Battery Battery { get; set; }
@@ -37,30 +34,33 @@ namespace ArktiPhonesDatabaseUploader.Models {
         public virtual OperatingSystem OperatingSystem { get; set; }
         public virtual Cpu Cpu { get; set; }
         public virtual Gpu Gpu { get; set; }
-        public DeviceDetail () {
-            Basic = new Basic ();
-            Status = new Status ();
-            Battery = new Battery ();
-            Display = new Display ();
-            Communication = new Communication ();
-            Communication.Usb = new Usb ();
-            Communication.Wlan = new Wlan ();
-            Communication.Gps = new Gps ();
-            Build = new Build ();
-            Build.Dimension = new Dimension ();
-            Build.Material = new Material ();
-            CameraInfo = new CameraInfo ();
-            Memory = new Memory ();
-            Price = new Price ();
-            OperatingSystem = new OperatingSystem ();
-            Cpu = new Cpu ();
-            Gpu = new Gpu ();
-        }
+        // public DeviceDetail()
+        // {
+        //     Basic = new Basic();
+        //     // Status = new Status ();
+        //     // Battery = new Battery ();
+        //     // Display = new Display ();
+        //     // Communication = new Communication ();
+        //     // Communication.Usb = new Usb ();
+        //     // Communication.Wlan = new Wlan ();
+        //     // Communication.Gps = new Gps ();
+        //     // Build = new Build ();
+        //     // Build.Dimension = new Dimension ();
+        //     // Build.Material = new Material ();
+        //     // CameraInfo = new CameraInfo ();
+        //     // Memory = new Memory ();
+        //     // Price = new Price ();
+        //     // OperatingSystem = new OperatingSystem ();
+        //     // Cpu = new Cpu ();
+        //     // Gpu = new Gpu ();
+        // }
 
     }
 
     // Used locally in application
-    public class DeviceDetailDefault : DeviceDetailBase {
+    public class DeviceDetailDefault {
+        public string Brand { get; set; }
+        public string Name { get; set; }
         public virtual BasicDefault Basic { get; set; }
         public virtual StatusDefault Status { get; set; }
         public virtual BatteryDefault Battery { get; set; }

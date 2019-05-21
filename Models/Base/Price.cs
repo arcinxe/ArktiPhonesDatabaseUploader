@@ -1,20 +1,24 @@
-namespace ArktiPhonesDatabaseUploader.Models {
-    public class PriceBase {
+namespace ArktiPhonesDatabaseUploader.Models
+{
+
+
+
+    // Used to work with SQL databases
+    public class Price
+    {
+        public int PriceID { get; set; }
         public double? Value { get; set; }
         public string Currency { get; set; }
         public double? EstimatedInEuro { get; set; }
-    }
-
-    // Used to work with SQL databases
-    public class Price : PriceBase {
-        public int PriceID { get; set; }
-
-        // public int DeviceDetailsID { get; set; }
-        public virtual DeviceDetail DeviceDetails { get; set; }
+        public int DeviceDetailID { get; set; }
+        public virtual DeviceDetail DeviceDetail { get; set; }
     }
 
     // Used locally in application
-    public class PriceDefault : PriceBase {
-
+    public class PriceDefault
+    {
+        public double? Value { get; set; }
+        public string Currency { get; set; }
+        public double? EstimatedInEuro { get; set; }
     }
 }

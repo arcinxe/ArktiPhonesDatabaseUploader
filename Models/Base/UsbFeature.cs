@@ -1,20 +1,22 @@
 using System.Collections.Generic;
 
-namespace ArktiPhonesDatabaseUploader.Models {
-    public class UsbFeatureBase {
-        public string Name { get; set; }
-    }
+namespace ArktiPhonesDatabaseUploader.Models
+{
+
+
 
     // Used to work with SQL databases
-    public class UsbFeature : UsbFeatureBase {
+    public class UsbFeature
+    {
         public int UsbFeatureID { get; set; }
-
+        public string Name { get; set; }
         public int UsbID { get; set; }
         public virtual Usb Usb { get; set; }
     }
 
     // Used locally in application
-    public class UsbFeatureDefault : UsbFeatureBase {
-
+    public class UsbFeatureDefault
+    {
+        public string Name { get; set; }
     }
 }
