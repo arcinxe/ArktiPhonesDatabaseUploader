@@ -1,0 +1,93 @@
+
+Started at 5/31/19 8:29:47 AM using mssql
+Started uploading of 8654 devices at rate of 1000 per transaction
+No,TimeInMilliseconds
+1,37752
+2,33370
+3,89133
+4,99861
+5,133467
+6,144462
+7,48378
+8,119097
+9,59155
+9 transactions done in ~12m:44s:680ms!
+Started at 5/31/19 8:43:19 AM using mysql
+Started uploading of 8654 devices at rate of 1000 per transaction
+No,TimeInMilliseconds
+1,35036
+2,29311
+3,28362
+4,29094
+5,30478
+6,27225
+7,24169
+8,25310
+9,17147
+9 transactions done in ~04m:06s:137ms!
+Started at 5/31/19 8:48:21 AM using sqlite
+Started uploading of 8654 devices at rate of 1000 per transaction
+No,TimeInMilliseconds
+1,17903
+2,14421
+3,13644
+4,18361
+5,16551
+6,12643
+7,13420
+8,11519
+9,9272
+9 transactions done in ~02m:07s:739ms!
+Started at 5/31/19 8:53:59 AM using mssql
+Started uploading of 8654 devices at rate of 100 per transaction
+No,TimeInMilliseconds
+1,9283
+2,21693
+3,35799
+
+Aborted in: ~00h:01m:14s:137ms!
+Started at 5/31/19 8:55:56 AM using mssql
+Started uploading of 1000 devices at rate of 100 per transaction
+No,TimeInMilliseconds
+1,8993
+2,24624
+3,33521
+4,31367
+5,66778
+6,21703
+7,4120
+8,3827
+9,5127
+10,4205
+11,683
+11 transactions done in ~03m:25s:670ms!
+Started at 5/31/19 9:00:56 AM using mysql
+Started uploading of 1000 devices at rate of 100 per transaction
+No,TimeInMilliseconds
+1,7612
+2,3724
+3,4439
+4,3795
+5,4184
+6,3802
+7,4375
+8,3929
+9,3685
+10,3925
+11,482
+11 transactions done in ~00m:43s:959ms!
+Started at 5/31/19 9:02:10 AM using sqlite
+Started uploading of 1000 devices at rate of 100 per transaction
+No,TimeInMilliseconds
+1,4426
+2,1395
+3,1463
+4,1475
+5,1497
+6,1524
+7,1570
+8,1576
+9,1766
+10,1667
+11,514
+11 transactions done in ~00m:18s:878ms!
