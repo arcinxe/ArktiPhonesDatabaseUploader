@@ -20,6 +20,10 @@ function selectDbContext() {
         echo "MySql"
         sed -i 's/\/\/\s*\.UseM/.UseM/' DeviceContext.cs
         ;;
+    mariadb)
+        echo "MariaDB"
+         sed -i 's/\/\/\s*\.UseM/.UseM/' DeviceContext.cs
+        ;;
     sqlite)
         echo "SQLite"
         sed -i 's/\/\/\s*\.UseSqli/.UseSqli/' DeviceContext.cs
@@ -27,13 +31,48 @@ function selectDbContext() {
     esac
 }
 
-databases=("mssql" "mysql" "sqlite") # "oracle"
-# selectDbContext $1
-for i in "${databases[@]}"; do
-    selectDbContext $i
+function wipeDatabase(){
     rm Migrations -r
     dotnet ef migrations add initial
     echo y | dotnet ef database drop
     dotnet ef database update
-    dotnet run $1 $i
+    sleep 10
+}
+
+
+start=`date`
+echo "Script started"
+echo $start
+
+databases=("mssql" "oracle" "mariadb" "sqlite")
+# selectDbContext $1
+#shift
+while test ${#} -gt 0
+do
+    for i in "${databases[@]}"; do
+#echo $1
+#echo $2
+#echo $i
+        selectDbContext $i
+        wipeDatabase
+        dotnet run $1 $i 1
+        wipeDatabase
+        dotnet run $1 $i 2
+        wipeDatabase
+        dotnet run $1 $i 3
+        wipeDatabase
+        dotnet run $1 $i 4
+        wipeDatabase
+        dotnet run $1 $i 5
+    done
+    shift
 done
+sleep 4
+# end=`date`
+# runtime=$((end-start))
+#echo $runtime
+# stop=`date`
+echo "Script started at"
+echo $start
+echo "and finished at"
+date
