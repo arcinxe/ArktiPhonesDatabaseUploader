@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Oracle.EntityFrameworkCore.Metadata;
 
 namespace ArktiPhonesDatabaseUploader.Migrations
 {
-    public partial class initial : Migration
+    public partial class initial_one : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,11 +12,9 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     BasicID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     GsmArenaId = table.Column<int>(nullable: false),
                     Slug = table.Column<string>(nullable: true),
-                    Brand = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     DeviceType = table.Column<string>(nullable: true)
                 },
@@ -30,7 +28,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     BatteryID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Capacity = table.Column<int>(nullable: true),
                     Technology = table.Column<string>(nullable: true),
                     Endurance = table.Column<int>(nullable: true)
@@ -45,7 +43,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     CameraInfoID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     PhotoResolution = table.Column<double>(nullable: true),
                     VideoResolution = table.Column<int>(nullable: true),
                     FrontCameraLeds = table.Column<int>(nullable: true),
@@ -62,7 +60,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     CpuID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Producer = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     Series = table.Column<string>(nullable: true),
@@ -79,7 +77,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     DisplayID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     ResolutionWidth = table.Column<int>(nullable: true),
                     ResolutionHeight = table.Column<int>(nullable: true),
                     ResolutionLines = table.Column<int>(nullable: true),
@@ -105,7 +103,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     GpsID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Available = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
@@ -118,7 +116,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     GpuID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true)
                 },
@@ -132,7 +130,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     MaterialID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Front = table.Column<string>(nullable: true),
                     Back = table.Column<string>(nullable: true),
                     Frame = table.Column<string>(nullable: true),
@@ -148,7 +146,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     MemoryID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     CardType = table.Column<string>(nullable: true),
                     CardMaxSize = table.Column<int>(nullable: true),
                     Internal = table.Column<int>(nullable: true),
@@ -165,7 +163,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     OperatingSystemID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Version = table.Column<string>(nullable: true),
                     LatestVersion = table.Column<string>(nullable: true),
@@ -182,7 +180,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     PriceID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Value = table.Column<double>(nullable: true),
                     Currency = table.Column<string>(nullable: true),
                     EstimatedInEuro = table.Column<double>(nullable: true)
@@ -193,11 +191,25 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Status",
+                columns: table => new
+                {
+                    StatusID = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    CurrentStatus = table.Column<string>(nullable: true),
+                    DatesOriginalText = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Status", x => x.StatusID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Usb",
                 columns: table => new
                 {
                     UsbID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Version = table.Column<string>(nullable: true),
                     Connector = table.Column<string>(nullable: true)
                 },
@@ -211,7 +223,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     WlanID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Available = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
@@ -224,7 +236,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     CameraID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Location = table.Column<string>(nullable: true),
                     Resolution = table.Column<double>(nullable: true),
                     OpticalZoom = table.Column<int>(nullable: true),
@@ -245,45 +257,11 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CameraFeature",
-                columns: table => new
-                {
-                    CameraFeatureID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    VideoFeatureCameraInfoID = table.Column<int>(nullable: true),
-                    RearCameraFeatureCameraInfoID = table.Column<int>(nullable: true),
-                    FrontCameraFeatureCameraInfoID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CameraFeature", x => x.CameraFeatureID);
-                    table.ForeignKey(
-                        name: "FK_CameraFeature_CameraInfos_FrontCameraFeatureCameraInfoID",
-                        column: x => x.FrontCameraFeatureCameraInfoID,
-                        principalTable: "CameraInfos",
-                        principalColumn: "CameraInfoID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_CameraFeature_CameraInfos_RearCameraFeatureCameraInfoID",
-                        column: x => x.RearCameraFeatureCameraInfoID,
-                        principalTable: "CameraInfos",
-                        principalColumn: "CameraInfoID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_CameraFeature_CameraInfos_VideoFeatureCameraInfoID",
-                        column: x => x.VideoFeatureCameraInfoID,
-                        principalTable: "CameraInfos",
-                        principalColumn: "CameraInfoID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "VideoMode",
                 columns: table => new
                 {
                     VideoModeID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Width = table.Column<int>(nullable: true),
                     Height = table.Column<int>(nullable: true),
                     FrameRate = table.Column<int>(nullable: true),
@@ -306,7 +284,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     GpsFeatureID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     GpsID = table.Column<int>(nullable: false)
                 },
@@ -326,7 +304,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     BuildID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Weight = table.Column<double>(nullable: true),
                     DimensionsID = table.Column<int>(nullable: true),
                     MaterialID = table.Column<int>(nullable: true)
@@ -343,11 +321,40 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Date",
+                columns: table => new
+                {
+                    DateID = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Year = table.Column<int>(nullable: true),
+                    Month = table.Column<int>(nullable: true),
+                    Quarter = table.Column<int>(nullable: true),
+                    AnnouncedStatusID = table.Column<int>(nullable: true),
+                    ReleasedStatusID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Date", x => x.DateID);
+                    table.ForeignKey(
+                        name: "FK_Date_Status_AnnouncedStatusID",
+                        column: x => x.AnnouncedStatusID,
+                        principalTable: "Status",
+                        principalColumn: "StatusID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Date_Status_ReleasedStatusID",
+                        column: x => x.ReleasedStatusID,
+                        principalTable: "Status",
+                        principalColumn: "StatusID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UsbFeature",
                 columns: table => new
                 {
                     UsbFeatureID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     UsbID = table.Column<int>(nullable: false)
                 },
@@ -367,7 +374,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     CommunicationID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     AudioJack = table.Column<bool>(nullable: true),
                     Bluetooth = table.Column<string>(nullable: true),
                     Infrared = table.Column<bool>(nullable: false),
@@ -404,7 +411,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     WlanFeatureID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     WlanID = table.Column<int>(nullable: false)
                 },
@@ -424,7 +431,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     WlanStandardID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     WlanID = table.Column<int>(nullable: false)
                 },
@@ -440,23 +447,44 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CertainCameraFeature",
+                name: "CameraFeature",
                 columns: table => new
                 {
-                    CertainCameraFeatureID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CameraFeatureID = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    CameraID = table.Column<int>(nullable: false)
+                    CameraID = table.Column<int>(nullable: true),
+                    VideoFeatureCameraInfoID = table.Column<int>(nullable: true),
+                    RearCameraFeatureCameraInfoID = table.Column<int>(nullable: true),
+                    FrontCameraFeatureCameraInfoID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CertainCameraFeature", x => x.CertainCameraFeatureID);
+                    table.PrimaryKey("PK_CameraFeature", x => x.CameraFeatureID);
                     table.ForeignKey(
-                        name: "FK_CertainCameraFeature_Camera_CameraID",
+                        name: "FK_CameraFeature_Camera_CameraID",
                         column: x => x.CameraID,
                         principalTable: "Camera",
                         principalColumn: "CameraID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CameraFeature_CameraInfos_FrontCameraFeatureCameraInfoID",
+                        column: x => x.FrontCameraFeatureCameraInfoID,
+                        principalTable: "CameraInfos",
+                        principalColumn: "CameraInfoID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CameraFeature_CameraInfos_RearCameraFeatureCameraInfoID",
+                        column: x => x.RearCameraFeatureCameraInfoID,
+                        principalTable: "CameraInfos",
+                        principalColumn: "CameraInfoID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CameraFeature_CameraInfos_VideoFeatureCameraInfoID",
+                        column: x => x.VideoFeatureCameraInfoID,
+                        principalTable: "CameraInfos",
+                        principalColumn: "CameraInfoID",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -464,7 +492,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     DeviceColorID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     BuildID = table.Column<int>(nullable: false)
                 },
@@ -484,7 +512,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 columns: table => new
                 {
                     DimensionID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
                     Width = table.Column<double>(nullable: true),
                     Height = table.Column<double>(nullable: true),
                     Thickness = table.Column<double>(nullable: true),
@@ -503,51 +531,13 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sensor",
-                columns: table => new
-                {
-                    SensorID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    CommunicationID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sensor", x => x.SensorID);
-                    table.ForeignKey(
-                        name: "FK_Sensor_Communications_CommunicationID",
-                        column: x => x.CommunicationID,
-                        principalTable: "Communications",
-                        principalColumn: "CommunicationID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "SimCard",
-                columns: table => new
-                {
-                    SimCardID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Type = table.Column<string>(nullable: true),
-                    CommunicationID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_SimCard", x => x.SimCardID);
-                    table.ForeignKey(
-                        name: "FK_SimCard_Communications_CommunicationID",
-                        column: x => x.CommunicationID,
-                        principalTable: "Communications",
-                        principalColumn: "CommunicationID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DeviceDetails",
                 columns: table => new
                 {
                     DeviceDetailID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Brand = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
                     BasicID = table.Column<int>(nullable: false),
                     StatusID = table.Column<int>(nullable: false),
                     BatteryID = table.Column<int>(nullable: false),
@@ -630,69 +620,69 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                         principalTable: "Prices",
                         principalColumn: "PriceID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Date",
-                columns: table => new
-                {
-                    DateID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Year = table.Column<int>(nullable: true),
-                    Month = table.Column<int>(nullable: true),
-                    Quarter = table.Column<int>(nullable: true),
-                    DeviceDetailsID = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Date", x => x.DateID);
                     table.ForeignKey(
-                        name: "FK_Date_DeviceDetails_DeviceDetailsID",
-                        column: x => x.DeviceDetailsID,
-                        principalTable: "DeviceDetails",
-                        principalColumn: "DeviceDetailID",
+                        name: "FK_DeviceDetails_Status_StatusID",
+                        column: x => x.StatusID,
+                        principalTable: "Status",
+                        principalColumn: "StatusID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Statuss",
+                name: "Sensor",
                 columns: table => new
                 {
-                    StatusID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CurrentStatus = table.Column<string>(nullable: true),
-                    AnnouncedDateDateID = table.Column<int>(nullable: true),
-                    ReleasedDateDateID = table.Column<int>(nullable: true),
-                    DatesOriginalText = table.Column<string>(nullable: true)
+                    SensorID = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    CommunicationID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Statuss", x => x.StatusID);
+                    table.PrimaryKey("PK_Sensor", x => x.SensorID);
                     table.ForeignKey(
-                        name: "FK_Statuss_Date_AnnouncedDateDateID",
-                        column: x => x.AnnouncedDateDateID,
-                        principalTable: "Date",
-                        principalColumn: "DateID",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_Sensor_Communications_CommunicationID",
+                        column: x => x.CommunicationID,
+                        principalTable: "Communications",
+                        principalColumn: "CommunicationID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SimCard",
+                columns: table => new
+                {
+                    SimCardID = table.Column<int>(nullable: false)
+                        .Annotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn),
+                    Type = table.Column<string>(nullable: true),
+                    CommunicationID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SimCard", x => x.SimCardID);
                     table.ForeignKey(
-                        name: "FK_Statuss_Date_ReleasedDateDateID",
-                        column: x => x.ReleasedDateDateID,
-                        principalTable: "Date",
-                        principalColumn: "DateID",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_SimCard_Communications_CommunicationID",
+                        column: x => x.CommunicationID,
+                        principalTable: "Communications",
+                        principalColumn: "CommunicationID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Builds_MaterialID",
                 table: "Builds",
                 column: "MaterialID",
-                unique: true,
-                filter: "[MaterialID] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Camera_CameraInfoID",
                 table: "Camera",
                 column: "CameraInfoID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CameraFeature_CameraID",
+                table: "CameraFeature",
+                column: "CameraID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CameraFeature_FrontCameraFeatureCameraInfoID",
@@ -710,35 +700,34 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 column: "VideoFeatureCameraInfoID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CertainCameraFeature_CameraID",
-                table: "CertainCameraFeature",
-                column: "CameraID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Communications_GpsID",
                 table: "Communications",
                 column: "GpsID",
-                unique: true,
-                filter: "[GpsID] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Communications_UsbID",
                 table: "Communications",
                 column: "UsbID",
-                unique: true,
-                filter: "[UsbID] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Communications_WlanID",
                 table: "Communications",
                 column: "WlanID",
-                unique: true,
-                filter: "[WlanID] IS NOT NULL");
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Date_DeviceDetailsID",
+                name: "IX_Date_AnnouncedStatusID",
                 table: "Date",
-                column: "DeviceDetailsID");
+                column: "AnnouncedStatusID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Date_ReleasedStatusID",
+                table: "Date",
+                column: "ReleasedStatusID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_DeviceColor_BuildID",
@@ -839,16 +828,6 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 column: "CommunicationID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Statuss_AnnouncedDateDateID",
-                table: "Statuss",
-                column: "AnnouncedDateDateID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Statuss_ReleasedDateDateID",
-                table: "Statuss",
-                column: "ReleasedDateDateID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UsbFeature_UsbID",
                 table: "UsbFeature",
                 column: "UsbID");
@@ -867,50 +846,21 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 name: "IX_WlanStandard_WlanID",
                 table: "WlanStandard",
                 column: "WlanID");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_DeviceDetails_Statuss_StatusID",
-                table: "DeviceDetails",
-                column: "StatusID",
-                principalTable: "Statuss",
-                principalColumn: "StatusID",
-                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Builds_Material_MaterialID",
-                table: "Builds");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_DeviceDetails_CameraInfos_CameraInfoID",
-                table: "DeviceDetails");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Communications_Gps_GpsID",
-                table: "Communications");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Communications_Usb_UsbID",
-                table: "Communications");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Communications_Wlan_WlanID",
-                table: "Communications");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_Date_DeviceDetails_DeviceDetailsID",
-                table: "Date");
-
             migrationBuilder.DropTable(
                 name: "CameraFeature");
 
             migrationBuilder.DropTable(
-                name: "CertainCameraFeature");
+                name: "Date");
 
             migrationBuilder.DropTable(
                 name: "DeviceColor");
+
+            migrationBuilder.DropTable(
+                name: "DeviceDetails");
 
             migrationBuilder.DropTable(
                 name: "Dimension");
@@ -940,34 +890,10 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 name: "Camera");
 
             migrationBuilder.DropTable(
-                name: "Material");
-
-            migrationBuilder.DropTable(
-                name: "CameraInfos");
-
-            migrationBuilder.DropTable(
-                name: "Gps");
-
-            migrationBuilder.DropTable(
-                name: "Usb");
-
-            migrationBuilder.DropTable(
-                name: "Wlan");
-
-            migrationBuilder.DropTable(
-                name: "DeviceDetails");
-
-            migrationBuilder.DropTable(
                 name: "Basics");
 
             migrationBuilder.DropTable(
                 name: "Batteries");
-
-            migrationBuilder.DropTable(
-                name: "Builds");
-
-            migrationBuilder.DropTable(
-                name: "Communications");
 
             migrationBuilder.DropTable(
                 name: "Cpus");
@@ -988,10 +914,28 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                 name: "Prices");
 
             migrationBuilder.DropTable(
-                name: "Statuss");
+                name: "Status");
 
             migrationBuilder.DropTable(
-                name: "Date");
+                name: "Builds");
+
+            migrationBuilder.DropTable(
+                name: "Communications");
+
+            migrationBuilder.DropTable(
+                name: "CameraInfos");
+
+            migrationBuilder.DropTable(
+                name: "Material");
+
+            migrationBuilder.DropTable(
+                name: "Gps");
+
+            migrationBuilder.DropTable(
+                name: "Usb");
+
+            migrationBuilder.DropTable(
+                name: "Wlan");
         }
     }
 }

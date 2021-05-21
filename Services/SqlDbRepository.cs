@@ -7,7 +7,7 @@ namespace ArktiPhonesDatabaseUploader {
         private readonly DeviceContext _db;
 
         public SqlDbRepository() {
-            _db = new DeviceContext();
+            _db = new DeviceContextMsSqlServerFactory().CreateDbContext(new string[] { });
         }
         public Models.DeviceDetail AddDevice(Models.DeviceDetail device) {
             _db.DeviceDetails.Add(device);

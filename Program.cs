@@ -3,9 +3,12 @@ using System.Linq;
 using ArktiPhonesDatabaseUploader.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ArktiPhonesDatabaseUploader {
-    class Program {
-        static void Main(string[] args) {
+namespace ArktiPhonesDatabaseUploader
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
             var startTime = DateTime.Now;
             System.Console.WriteLine($"Started at {startTime}");
             var devices = new FileLoader().LoadDevices();
@@ -17,12 +20,19 @@ namespace ArktiPhonesDatabaseUploader {
             // }
             var repo = new SqlDbRepository();
             var converter = new DeviceDetailConvert();
-            var deviceToInsert = devices
+            var count = 0;
+            var devicesToInsert = devices
                 // .Take(100)
                 .Select(d => converter.Convert(d));
-            for (var i = 0; i < (deviceToInsert.Count() / 1000) + 1; i++) {
-                repo.AddDevices(deviceToInsert.Skip(i * 1000).Take(1000));
+            count = devicesToInsert.Count();
+            for (var i = 0; i < (count / 100) + 1; i++)
+            {
+                System.Console.WriteLine($"{((double)i / count * 10000).ToString("#.##")}% - {i} out of {count / 100} done");
+                repo.AddDevices(devicesToInsert.Skip(i * 100).Take(100));
             }
+            // repo.AddDevice(deviceToInsert.FirstOrDefault());
+
+
             // foreach (var device in devices) {
             //     repo.AddDevice(converter.Convert(device));
             //     System.Console.WriteLine ($"Device {count++} out of {devices.Count}");
@@ -36,10 +46,13 @@ namespace ArktiPhonesDatabaseUploader {
             // db.DeviceDetails.Add (foo);
             // db.SaveChanges ();
             // System.Console.WriteLine (db.Basics.Count ());
-            // var device = service.GetDevices().Where(d => d.CameraInfo.Cameras.Count > 5).FirstOrDefault();
-            // System.Console.WriteLine(device?.Basics.Name);
-            // System.Console.WriteLine("Gud");
-            // service.RemoveDevice(device.Basics.DeviceId);
+
+            var db = new DeviceContextMsSqlServerFactory().CreateDbContext(new string[] { });
+            var device = db.DeviceDetails.Where(d => d.CameraInfo.Cameras.Count > 5).FirstOrDefault();
+            System.Console.WriteLine(device?.Name);
+            System.Console.WriteLine("Gud");
+            var id = device.Basic.GsmArenaId;
+            // repo.RemoveDevice(device.Basic.GsmArenaId);
             System.Console.WriteLine($"Done in: ~{(DateTime.Now - startTime):mm\\m\\:ss\\s\\:fff\\m\\s}!");
         }
     }

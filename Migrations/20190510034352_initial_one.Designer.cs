@@ -2,29 +2,28 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Oracle.EntityFrameworkCore.Metadata;
 
 namespace ArktiPhonesDatabaseUploader.Migrations
 {
     [DbContext(typeof(DeviceContext))]
-    [Migration("20190423061738_fix_camera")]
-    partial class fix_camera
+    [Migration("20190510034352_initial_one")]
+    partial class initial_one
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Oracle:ValueGenerationStrategy", OracleValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Basic", b =>
                 {
                     b.Property<int>("BasicID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("DeviceType");
 
@@ -42,8 +41,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Battery", b =>
                 {
                     b.Property<int>("BatteryID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("Capacity");
 
@@ -59,8 +57,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Build", b =>
                 {
                     b.Property<int>("BuildID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("DimensionsID");
 
@@ -71,8 +68,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasKey("BuildID");
 
                     b.HasIndex("MaterialID")
-                        .IsUnique()
-                        .HasFilter("[MaterialID] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Builds");
                 });
@@ -80,8 +76,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Camera", b =>
                 {
                     b.Property<int>("CameraID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<double?>("Aperture");
 
@@ -107,8 +102,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraFeature", b =>
                 {
                     b.Property<int>("CameraFeatureID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("CameraID");
 
@@ -136,8 +130,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.CameraInfo", b =>
                 {
                     b.Property<int>("CameraInfoID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("CameraOriginalText");
 
@@ -157,8 +150,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Communication", b =>
                 {
                     b.Property<int>("CommunicationID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("AudioJack");
 
@@ -177,16 +169,13 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasKey("CommunicationID");
 
                     b.HasIndex("GpsID")
-                        .IsUnique()
-                        .HasFilter("[GpsID] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("UsbID")
-                        .IsUnique()
-                        .HasFilter("[UsbID] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("WlanID")
-                        .IsUnique()
-                        .HasFilter("[WlanID] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Communications");
                 });
@@ -194,8 +183,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Cpu", b =>
                 {
                     b.Property<int>("CpuID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("Cores");
 
@@ -215,8 +203,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Date", b =>
                 {
                     b.Property<int>("DateID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("AnnouncedStatusID");
 
@@ -231,12 +218,10 @@ namespace ArktiPhonesDatabaseUploader.Migrations
                     b.HasKey("DateID");
 
                     b.HasIndex("AnnouncedStatusID")
-                        .IsUnique()
-                        .HasFilter("[AnnouncedStatusID] IS NOT NULL");
+                        .IsUnique();
 
                     b.HasIndex("ReleasedStatusID")
-                        .IsUnique()
-                        .HasFilter("[ReleasedStatusID] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Date");
                 });
@@ -244,8 +229,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.DeviceColor", b =>
                 {
                     b.Property<int>("DeviceColorID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BuildID");
 
@@ -261,8 +245,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.DeviceDetail", b =>
                 {
                     b.Property<int>("DeviceDetailID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BasicID");
 
@@ -336,8 +319,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Dimension", b =>
                 {
                     b.Property<int>("DimensionID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("BuildID");
 
@@ -360,8 +342,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Display", b =>
                 {
                     b.Property<int>("DisplayID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<double?>("Area");
 
@@ -399,8 +380,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Gps", b =>
                 {
                     b.Property<int>("GpsID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Available");
 
@@ -412,8 +392,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.GpsFeature", b =>
                 {
                     b.Property<int>("GpsFeatureID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("GpsID");
 
@@ -429,8 +408,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Gpu", b =>
                 {
                     b.Property<int>("GpuID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Model");
 
@@ -444,8 +422,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Material", b =>
                 {
                     b.Property<int>("MaterialID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Back");
 
@@ -463,8 +440,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Memory", b =>
                 {
                     b.Property<int>("MemoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int?>("CardMaxSize");
 
@@ -484,8 +460,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.OperatingSystem", b =>
                 {
                     b.Property<int>("OperatingSystemID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("FlavorName");
 
@@ -505,8 +480,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Price", b =>
                 {
                     b.Property<int>("PriceID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Currency");
 
@@ -522,8 +496,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Sensor", b =>
                 {
                     b.Property<int>("SensorID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CommunicationID");
 
@@ -539,8 +512,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.SimCard", b =>
                 {
                     b.Property<int>("SimCardID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CommunicationID");
 
@@ -556,8 +528,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Status", b =>
                 {
                     b.Property<int>("StatusID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("CurrentStatus");
 
@@ -571,8 +542,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Usb", b =>
                 {
                     b.Property<int>("UsbID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Connector");
 
@@ -586,8 +556,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.UsbFeature", b =>
                 {
                     b.Property<int>("UsbFeatureID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
@@ -603,8 +572,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.VideoMode", b =>
                 {
                     b.Property<int>("VideoModeID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("CameraInfoID");
 
@@ -626,8 +594,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.Wlan", b =>
                 {
                     b.Property<int>("WlanID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool?>("Available");
 
@@ -639,8 +606,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.WlanFeature", b =>
                 {
                     b.Property<int>("WlanFeatureID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
@@ -656,8 +622,7 @@ namespace ArktiPhonesDatabaseUploader.Migrations
             modelBuilder.Entity("ArktiPhonesDatabaseUploader.Models.WlanStandard", b =>
                 {
                     b.Property<int>("WlanStandardID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
